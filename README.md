@@ -5,7 +5,7 @@ and change a little bit.
 
 It's a cute project!
 
-## requirement
+## Requirement
 python 2.x
 
 ## How to use 
