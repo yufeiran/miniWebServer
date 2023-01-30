@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            function loadXMLDoc()
+            {
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {
+                    //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+                    xmlhttp=new XMLHttpRequest();
+                }
+                else
+                {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function()
+                {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                    {
+                        document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET","get_time_and_random.py",true);
+                xmlhttp.send();
+            }
+
+            var int;
+            function startClock()
+            {
+                int=self.setInterval("loadXMLDoc()",1000);
+            }
+            function endClock()
+            {
+                int=window.clearInterval(int);
+            }
+
+        </script>
+        <title>Index Page</title>
+    </head>
+    <body>
+        <h1>Index Page</h1>
+        <p>Welcome to my home.</p>
+
+        <p>下面一栏按了按钮后会生成当前时间和随机数</p>
+        <div id="myDiv" style="background-color:rgb(219,77,109)"><h2>Hi</h2></div>
+        <button type="button" onclick="loadXMLDoc()">tryOne</button>
+        <button type="button" onclick="startClock()">start定时更新</button>
+        <button type="button" onclick="endClock()">end定时更新</button>
+    </body>
+</html>
